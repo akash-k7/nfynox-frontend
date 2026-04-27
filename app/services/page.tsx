@@ -4,14 +4,25 @@ export default async function ServicesPage() {
   const services = await getServices();
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold">Services</h1>
+    <main className="p-10">
+      <h1 className="text-4xl font-bold mb-6">
+        Our Services
+      </h1>
 
-      {services.map((s: any) => (
-        <div key={s.slug}>
-          <a href={`/services/${s.slug}`}>{s.title}</a>
-        </div>
-      ))}
-    </div>
+      <div className="grid md:grid-cols-3 gap-6">
+        {services.map((s: any) => (
+          <a
+            key={s.slug}
+            href={`/services/${s.slug}`}
+            className="border p-6 rounded hover:shadow"
+          >
+            <h2 className="text-xl font-semibold">{s.title}</h2>
+            <p className="mt-2 text-sm">
+              Enterprise-grade infrastructure solutions
+            </p>
+          </a>
+        ))}
+      </div>
+    </main>
   );
 }
